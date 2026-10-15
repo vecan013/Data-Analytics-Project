@@ -1,0 +1,13 @@
+
+__pycache__/
+*.py[cod]
+.venv/
+
+# Keep datasets out of GitHub
+data/raw/
+data/processed/
+*.csv
+
+# Temporary files
+*.log
+.DS_Store
