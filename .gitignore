@@ -1,13 +1,20 @@
-
+```gitignore
+# Python cache and virtual environments
 __pycache__/
 *.py[cod]
 .venv/
+venv/
 
-# Keep datasets out of GitHub
-data/raw/
-data/processed/
-*.csv
+# Raw datasets - do not upload
+data/
 
 # Temporary files
 *.log
 .DS_Store
+
+# Environment variables and secrets
+.env
+
+# Optional: local editor settings
+.vscode/
+```
