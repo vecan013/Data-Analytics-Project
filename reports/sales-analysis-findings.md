@@ -1,14 +1,16 @@
 # Sales Analysis Findings
 
 ## 1. Objective
+
 Analyze Olist e-commerce sales data to identify monthly sales trends and the product categories generating the highest item sales value.
 
 ## 2. Key Metrics
-- **Delivered orders:** 96,478
-- **Total item sales value:** 13,221,498.11
-- **Average item sales value per delivered order:** 137.04
 
-*Note: Item sales value is calculated using product item prices and excludes freight charges. Currency is not explicitly specified in this report.*
+- **Delivered orders:** 96,478
+- **Total item sales value:** R$ 13,221,498.11
+- **Average item sales value per delivered order:** R$ 137.04
+
+*Note: Monetary values are expressed in Brazilian reais (R$). Item sales value is calculated using product item prices and excludes freight charges. These figures represent sales value, not profit.*
 
 ## 3. Top Product Categories
 The top categories by item sales value are:
