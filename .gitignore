@@ -7,6 +7,8 @@ __pycache__/
 data/raw/
 data/processed/
 *.csv
+!output/delivery_summary.csv
+!output/customer_satisfaction_summary.csv
 
 # Temporary files
 *.log
