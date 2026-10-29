@@ -1,7 +1,8 @@
-
+# Python cache and virtual environments
 __pycache__/
 *.py[cod]
 .venv/
+venv/
 
 # Keep datasets out of GitHub
 data/raw/
@@ -9,7 +10,15 @@ data/processed/
 *.csv
 !output/delivery_summary.csv
 !output/customer_satisfaction_summary.csv
+# Raw datasets - do not upload
+data/
 
 # Temporary files
 *.log
 .DS_Store
+
+# Environment variables and secrets
+.env
+
+# Optional: local editor settings
+.vscode/
