@@ -1,6 +1,11 @@
 USE olist_analytics;
 
--- Query 1: Sales KPI Analysis
+-- QUERY 1: SALES KPI ANALYSIS
+-- PURPOSE:
+-- Calculate the number of delivered orders, total item
+-- sales value and average item sales value per delivered
+-- order.
+-- NOTE: Freight charges are excluded from item sales value.
 
 SELECT
     COUNT(DISTINCT o.order_id) AS delivered_orders,
@@ -13,22 +18,13 @@ JOIN order_items oi
     ON o.order_id = oi.order_id
 WHERE o.order_status = 'delivered';
 
- -- Query 2: Top 10 Product Categories by Sales
-
-SELECT
-    COALESCE(p.product_category_name, 'unknown') AS category,
-    ROUND(SUM(oi.price), 2) AS item_sales_value
-FROM orders o
-JOIN order_items oi
-    ON o.order_id = oi.order_id
-JOIN products p
-    ON oi.product_id = p.product_id
-WHERE o.order_status = 'delivered'
-GROUP BY COALESCE(p.product_category_name, 'unknown')
-ORDER BY item_sales_value DESC
-LIMIT 10;
-
--- Query 3: Monthly item sales trend
+-- QUERY 3: MONTHLY SALES TREND
+-- PURPOSE:
+-- Calculate delivered order counts and item sales value
+-- grouped by the month when orders were purchased.
+-- Only orders with delivered status are included.
+-- NOTE: This groups eventual delivered orders by purchase
+-- month; it does not measure sales by delivery month.
 
 SELECT
     DATE_FORMAT(o.order_purchase_timestamp, '%Y-%m') AS sales_month,
@@ -41,7 +37,11 @@ WHERE o.order_status = 'delivered'
 GROUP BY DATE_FORMAT(o.order_purchase_timestamp, '%Y-%m')
 ORDER BY sales_month;
 
--- Query 4: Payment method analysis
+-- QUERY 4: PAYMENT METHOD ANALYSIS
+-- PURPOSE:
+-- Compare payment methods by number of payment records,
+-- total payment value and average payment value.
+-- NOTE: Payment records are counted, not distinct orders.
 
 SELECT
     payment_type,
@@ -52,14 +52,7 @@ FROM payments
 GROUP BY payment_type
 ORDER BY total_payment_value DESC;
 
-USE olist_analytics;
-
-CREATE TABLE IF NOT EXISTS category_translation (
-    product_category_name VARCHAR(100) PRIMARY KEY,
-    product_category_name_english VARCHAR(100)
-);
-
--- Query 2: Top 10 product categories by item sales value
+-- Top 10 product categories by item sales value
 -- Purpose: Rank delivered-order product categories using
 -- English category names. Freight is excluded.
 
