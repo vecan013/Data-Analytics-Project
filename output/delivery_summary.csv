@@ -1,0 +1,13 @@
+metric,value
+Total delivered orders,96478.0
+Valid delivery records,96470.0
+Excluded delivery records,8.0
+Average delivery time (days),12.558217098051975
+Median delivery time (days),10.217476851851853
+Minimum delivery time (days),0.5334143518518518
+Maximum delivery time (days),209.6286111111111
+Eligible delivered orders,96470.0
+Late orders,7826.0
+On-time orders,88644.0
+Late delivery rate (%),8.112366538820359
+On-time delivery rate (%),91.88763346117965

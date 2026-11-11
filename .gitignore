@@ -1,10 +1,15 @@
-```gitignore
 # Python cache and virtual environments
 __pycache__/
 *.py[cod]
 .venv/
 venv/
 
+# Keep datasets out of GitHub
+data/raw/
+data/processed/
+*.csv
+!output/delivery_summary.csv
+!output/customer_satisfaction_summary.csv
 # Raw datasets - do not upload
 data/
 
@@ -17,4 +22,3 @@ data/
 
 # Optional: local editor settings
 .vscode/
-```
