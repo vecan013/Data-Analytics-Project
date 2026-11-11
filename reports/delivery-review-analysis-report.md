@@ -1,5 +1,9 @@
 # Delivery Performance and Customer Satisfaction Analysis
+**Review Data Matching and Exclusions**
 
+Out of 96,470 eligible delivered orders, 95,824 orders had matching customer review records and were included in the customer satisfaction analysis. The remaining 646 orders had no matching review records and were excluded from the review-score comparison.
+
+All 95,824 matched orders had valid review scores. Therefore, the satisfaction analysis is based on 95,824 orders, while delivery performance calculations use 96,470 eligible delivered orders.
 ## 1. Objective
 
 Analyze delivery performance and examine the relationship between delivery status and customer satisfaction using the Olist orders and order reviews datasets.
