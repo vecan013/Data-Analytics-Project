@@ -233,7 +233,7 @@ satisfaction = eligible.merge(
     on="order_id",
     how="inner",
     validate="one_to_one"
-)
+).dropna(subset=["review_score"])
 
 print("\n--- CUSTOMER SATISFACTION ---")
 print("Delivered orders matched with reviews:", len(satisfaction))
