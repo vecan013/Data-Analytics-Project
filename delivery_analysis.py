@@ -196,6 +196,37 @@ review_scores = (
     .agg(review_score=("review_score", "mean"))
 )
 
+
+# Investigate eligible orders without matching review records
+eligible_order_ids = set(eligible["order_id"].dropna().unique())
+review_order_ids = set(reviews["order_id"].dropna().unique())
+
+missing_review_ids = eligible_order_ids - review_order_ids
+
+print("\n--- REVIEW MATCH INVESTIGATION ---")
+print("Eligible delivered orders:", len(eligible_order_ids))
+print("Unique orders with review records:", len(review_order_ids))
+print("Eligible orders with matching reviews:",
+      len(eligible_order_ids & review_order_ids))
+print("Eligible orders without review records:",
+      len(missing_review_ids))
+
+print("\nSample eligible orders without reviews:")
+print(list(missing_review_ids)[:10])
+
+# Check matched reviews with missing review scores
+matched_review_data = eligible[["order_id"]].merge(
+    review_scores,
+    on="order_id",
+    how="inner",
+    validate="one_to_one"
+)
+
+print("\nMatched orders with missing review scores:",
+      matched_review_data["review_score"].isna().sum())
+print("Matched orders with valid review scores:",
+      matched_review_data["review_score"].notna().sum())
+
 # Merge review scores with delivery status
 satisfaction = eligible.merge(
     review_scores,
