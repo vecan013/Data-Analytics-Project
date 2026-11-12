@@ -91,20 +91,23 @@ AOV was R$159.83, calculated by dividing the total value of product prices plus 
 
 ## 8. RFM Customer Segmentation
 
-RFM scores were calculated using quintiles. Recency was scored in reverse, while frequency and monetary scores increased with higher values. The reference date was one day after the latest eligible purchase date.
+RFM (Recency, Frequency, Monetary) analysis was performed to segment customers based on their purchasing behavior. The reference date was one day after the latest eligible purchase date.
+
+Recency scores were calculated using percentile-based ranking in reverse order, so more recent customers received higher scores. Frequency scores were assigned using business-rule thresholds: 1 order = 1, 2 orders = 2, 3 orders = 3, 4–5 orders = 4, and 6 or more orders = 5. Monetary scores were calculated using percentile-based ranking, with higher spending receiving higher scores. Customers with tied values received the same score.
 
 | Segment | Customers | Average monetary value (BRL) | Average frequency |
 |---|---:|---:|---:|
-| Other Customers | 37,953 | 150.19 | 1.00 |
-| Needs Re-engagement | 31,352 | 137.20 | 1.01 |
-| Recent and Frequent | 14,908 | 176.92 | 1.09 |
-| Frequent High Spenders | 9,145 | 304.03 | 1.15 |
+| Other Customers | 55,930 | 164.57 | 1.03 |
+| Needs Re-engagement | 37,384 | 165.28 | 1.03 |
+| Recent and Frequent | 32 | 871.73 | 4.97 |
+| Frequent High Spenders | 12 | 735.88 | 4.92 |
 
-The largest segment was Other Customers. Needs Re-engagement represented 31,352 customers, while Frequent High Spenders had the highest average monetary value at R$304.03.
+Other Customers represented the largest segment, with 55,930 customers. Needs Re-engagement included 37,384 customers. The Recent and Frequent segment contained 32 customers, while Frequent High Spenders contained 12 customers.
 
-These are simplified, rule-based segments rather than validated loyalty classifications. Average purchase frequencies close to one indicate that even customers assigned to the higher-frequency segments generally had few delivered orders. Quintile scoring with rank-based tie handling can also assign different scores to customers with tied underlying values.
+These are simplified, rule-based customer segments rather than validated loyalty classifications. The high concentration of one-time purchasers reflects the purchasing patterns in the dataset.
 
 The visualization is saved as `output/rfm_customer_segments.png`.
+
 
 ## 9. Business Recommendations
 
@@ -116,10 +119,5 @@ The visualization is saved as `output/rfm_customer_segments.png`.
 
 ## 10. Limitations
 
-- The analysis covers the records available in the supplied dataset and uses delivered orders with valid purchase timestamps for the principal customer metrics.
-- Missing delivery and approval timestamps occur in the original orders data; orders were not included in the eligible population unless their status was delivered and their purchase timestamp was valid.
-- Some product records have missing category names. Unknown categories were retained rather than silently discarded.
-- Customer counts do not measure profitability or explain customer motivations.
-- The RFM reference date is historical and based on the latest eligible purchase, so the scores do not describe current activity.
-- Rank-based quintile scoring can split tied values across score groups. The simplified segment labels should be validated before business deployment.
-- Monthly counts may be affected by partial periods and dataset boundaries.
+
+- Recency and monetary scores use percentile-based ranking with average tie handling, while frequency scores use predefined business-rule thresholds. The simplified RFM segments should be validated before business deployment.
